@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import { Formik } from 'formik';
 
-const Today = () => {
+const Add = () => {
   return (
     <View>
       <View style={styles.container}>
@@ -58,7 +58,7 @@ const Today = () => {
   );
 };
 
-export default Today;
+export default Add;
 
 const styles = StyleSheet.create({
   container: {
@@ -66,16 +66,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '5px',
+    gap: 5,
   },
   title: {
-    fontSize: '32px',
+    fontSize: 24,
   },
 
   formContainer: {
     display: 'flex',
-    gap: '10px',
-    padding: '10px',
+    gap: 10,
+    padding: 10,
   },
 
   textInput: {

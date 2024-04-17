@@ -15,9 +15,9 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="today"
+        name="add"
         options={{
-          title: 'Today',
+          title: 'Add',
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="plus" color={color} />
           ),
