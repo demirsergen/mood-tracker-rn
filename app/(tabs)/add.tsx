@@ -7,8 +7,11 @@ import {
 } from 'react-native';
 import React from 'react';
 import { Formik } from 'formik';
+import useEntryStore from '../../store/entryStore';
 
 const Add = () => {
+  const { addEntry, entries } = useEntryStore();
+
   return (
     <View>
       <View style={styles.container}>
@@ -17,9 +20,13 @@ const Add = () => {
           initialValues={{
             high: '',
             low: '',
-            rating: '',
+            rating: 0,
           }}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(entry) => {
+            addEntry(entry);
+
+            console.log(entry);
+          }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
             <View style={styles.formContainer}>
@@ -49,7 +56,7 @@ const Add = () => {
                 keyboardType="numeric"
                 style={styles.textInput}
               />
-              <Button onPress={handleSubmit} title="Submit" />
+              <Button onPress={handleSubmit} title="Add" />
             </View>
           )}
         </Formik>

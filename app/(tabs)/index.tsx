@@ -1,27 +1,45 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Link } from 'expo-router';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import GenericLink from '../../components/GenericLink';
+import useEntryStore from '../../store/entryStore';
+import EntryItem from '../../components/EntryItem';
 
-type HomeProps = {};
+type HomeProps = {
+  entry: object;
+};
 
 const Home: React.FunctionComponent<HomeProps> = ({}) => {
+  const { entries } = useEntryStore();
+  console.log(entries);
   return (
     <SafeAreaProvider>
       <View
         style={{
+          display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           flex: 1,
+          backgroundColor: '#CFE1E5',
+          padding: 10,
         }}
       >
         <Text>Home Page</Text>
-        <GenericLink location="/settings" title="Settings" />
+        <View style={styles.entriesContainer}>
+          <FlatList
+            data={entries}
+            renderItem={(entry) => <EntryItem entry={entry} />}
+            keyExtractor={(entry) => entry.id}
+            style={{ gap: 10 }}
+          />
+        </View>
       </View>
     </SafeAreaProvider>
   );
 };
+
+const styles = StyleSheet.create({
+  entriesContainer: {},
+});
 
 export default Home;
